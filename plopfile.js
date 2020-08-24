@@ -1,7 +1,12 @@
-module.exports = function (plop) {
-  const basePath = process.env.USE_ONE_BASE_PATH || "src/states/";
+const path = require("path");
 
-  plop.setGenerator("1", {
+module.exports = function (plop) {
+  const basePath = path.join(
+    process.cwd(),
+    process.env.USE_ONE_BASE_PATH || "src/states/"
+  );
+
+  plop.setGenerator("useOne", {
     description: "create one share state",
     prompts: [
       {
