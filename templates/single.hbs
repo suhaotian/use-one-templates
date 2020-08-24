@@ -14,7 +14,7 @@ const [use{{properCase name}}, {{name}}Store] = createOne<{{properCase name}}Sta
 export { use{{properCase name}}, {{name}}Store };
 
 export const {{name}}Selectors = {
-  getState(): {{properCase name}}StateType  {
+  get state(): {{properCase name}}StateType  {
     return {{name}}Store.getState(); 
   },
 };

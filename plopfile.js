@@ -25,7 +25,7 @@ module.exports = function (plop) {
         ? [
             {
               type: "add",
-              path: `${basePath}/use{{properCase name}}.ts`,
+              path: `${basePath}/{{name}}.ts`,
               templateFile: "templates/single.hbs",
             },
           ]

@@ -58,7 +58,7 @@ src
     │   ├── types.ts
     │   ├── useAuthInfo.ts
     │   └── utils.ts
-    ├── useCount.ts
+    ├── count.ts
     └── userInfo
         ├── actions.ts
         ├── index.ts
