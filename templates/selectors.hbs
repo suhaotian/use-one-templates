@@ -1,0 +1,9 @@
+import { {{name}}Store, {{name}}InitialState } from './use{{properCase name}}';
+import { {{properCase name}}InitialStateType } from './types';
+
+
+export const {{name}}Selectors = {
+  getState(): {{properCase name}}InitialStateType  {
+    return {{name}}Store.getState(); 
+  },
+}

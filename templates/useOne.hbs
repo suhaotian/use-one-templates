@@ -1,0 +1,12 @@
+import { createOne } from 'use-one';
+
+let initialState = {
+  //
+};
+
+export type {{properCase name}}InitialStateType = Readonly<typeof initialState>;
+
+export const {{name}}InitialState: {{properCase name}}InitialStateType = initialState;
+
+const [use{{properCase name}}, {{name}}Store] = createOne<{{properCase name}}InitialStateType>({{name}}InitialState);
+export { use{{properCase name}}, {{name}}Store };
