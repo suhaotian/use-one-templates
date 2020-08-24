@@ -28,6 +28,11 @@ module.exports = function (plop) {
       },
       {
         type: "add",
+        path: `${basePath}/{{name}}/utils.ts`,
+        templateFile: "templates/utils.hbs",
+      },
+      {
+        type: "add",
         path: `${basePath}/{{name}}/use{{properCase name}}.ts`,
         templateFile: "templates/useOne.hbs",
       },
