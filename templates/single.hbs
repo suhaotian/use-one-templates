@@ -1,0 +1,27 @@
+/** Generator by `use-one-templates` https://github.com/suhaotian/use-one-templates */
+
+import { createOne } from 'use-one';
+
+let initialState = {
+  //
+};
+
+export type {{properCase name}}StateType = Readonly<typeof initialState>;
+
+export const {{name}}InitialState: {{properCase name}}StateType = initialState;
+
+const [use{{properCase name}}, {{name}}Store] = createOne<{{properCase name}}StateType>({{name}}InitialState);
+export { use{{properCase name}}, {{name}}Store };
+
+export const {{name}}Selectors = {
+  getState(): {{properCase name}}StateType  {
+    return {{name}}Store.getState(); 
+  },
+};
+
+export const {{name}}Actions = {
+  reset() {
+    {{name}}Store.replaceState({{name}}InitialState);
+  },
+};
+

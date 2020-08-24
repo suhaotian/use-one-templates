@@ -24,7 +24,7 @@ npm install plop use-one-templates --save-dev
 }
 ```
 
-`USE_ONE_BASE_PATH` default is `src/states/`, will generator files at the `src/states/` directory.
+`USE_ONE_BASE_PATH` default is `src/states/`, default will generator files at the `src/states/` directory.
 
 ### Useage
 
@@ -32,18 +32,18 @@ Let's create one `count`/`userInfo`/`authInfo` state
 
 **yarn**
 
-```
-yarn use-one count
-yarn use-one userInfo
-yarn use-one authInfo
+```base
+yarn use-one count true     # generate single file
+yarn use-one userInfo false # generate a folder
+yarn use-one authInfo false # generate a folder
 ```
 
 **npm**
 
-```
-npm run use-one count
-npm run use-one userInfo
-npm run use-one authInfo
+```base
+npm run use-one count true     # generate single file
+npm run use-one userInfo false # generate a folder
+npm run use-one authInfo false # generate a folder
 ```
 
 **generator output:**
@@ -56,22 +56,16 @@ src
     │   ├── index.ts
     │   ├── selectors.ts
     │   ├── types.ts
+    │   ├── useAuthInfo.ts
     │   └── utils.ts
-    │   └── useAuthInfo.ts
-    ├── count
-    │   ├── actions.ts
-    │   ├── index.ts
-    │   ├── selectors.ts
-    │   ├── types.ts
-    │   └── utils.ts
-    │   └── useCount.ts
+    ├── useCount.ts
     └── userInfo
         ├── actions.ts
         ├── index.ts
         ├── selectors.ts
         ├── types.ts
+        ├── useUserInfo.ts
         └── utils.ts
-        └── useUseInfo.ts
 
-4 directories, 15 files
+3 directories, 13 files
 ```

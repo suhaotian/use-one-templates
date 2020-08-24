@@ -12,40 +12,57 @@ module.exports = function (plop) {
       {
         type: "input",
         name: "name",
-        message: "please type name, e.g: count",
+        message: "please type name, e.g: userInfo",
+      },
+      {
+        type: "confirm",
+        name: "single",
+        message: "generate single file?",
       },
     ],
-    actions: [
-      {
-        type: "add",
-        path: `${basePath}/{{name}}/index.ts`,
-        templateFile: "templates/index.hbs",
-      },
-      {
-        type: "add",
-        path: `${basePath}/{{name}}/types.ts`,
-        templateFile: "templates/types.hbs",
-      },
-      {
-        type: "add",
-        path: `${basePath}/{{name}}/utils.ts`,
-        templateFile: "templates/utils.hbs",
-      },
-      {
-        type: "add",
-        path: `${basePath}/{{name}}/use{{properCase name}}.ts`,
-        templateFile: "templates/useOne.hbs",
-      },
-      {
-        type: "add",
-        path: `${basePath}/{{name}}/actions.ts`,
-        templateFile: "templates/actions.hbs",
-      },
-      {
-        type: "add",
-        path: `${basePath}/{{name}}/selectors.ts`,
-        templateFile: "templates/selectors.hbs",
-      },
-    ],
+    actions: (data) => {
+      const actions = data.single
+        ? [
+            {
+              type: "add",
+              path: `${basePath}/use{{properCase name}}.ts`,
+              templateFile: "templates/single.hbs",
+            },
+          ]
+        : [
+            {
+              type: "add",
+              path: `${basePath}/{{name}}/index.ts`,
+              templateFile: "templates/index.hbs",
+            },
+            {
+              type: "add",
+              path: `${basePath}/{{name}}/types.ts`,
+              templateFile: "templates/types.hbs",
+            },
+            {
+              type: "add",
+              path: `${basePath}/{{name}}/utils.ts`,
+              templateFile: "templates/utils.hbs",
+            },
+            {
+              type: "add",
+              path: `${basePath}/{{name}}/use{{properCase name}}.ts`,
+              templateFile: "templates/useOne.hbs",
+            },
+            {
+              type: "add",
+              path: `${basePath}/{{name}}/actions.ts`,
+              templateFile: "templates/actions.hbs",
+            },
+            {
+              type: "add",
+              path: `${basePath}/{{name}}/selectors.ts`,
+              templateFile: "templates/selectors.hbs",
+            },
+          ];
+
+      return actions;
+    },
   });
 };
