@@ -1,6 +1,6 @@
 # useOne templates
 
-This is templates generator for [use-one](https://use-one.com)
+This is templates generator for [use-one](https://github.com/suhaotian/use-one)
 
 ## Install
 
