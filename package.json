@@ -1,13 +1,18 @@
 {
   "name": "use-one-templates",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "suhaotian",
   "license": "MIT",
+  "files": [
+    "README.md",
+    "templates",
+    "plopfile.js"
+  ],
   "scripts": {
     "plop": "USE_ONE_BASE_PATH=src/states/ plop --plopfile plopfile.js"
   },
   "peerDependencies": {
-    "plop": "^2.7.4"
+    "plop": "^4.0.1"
   }
 }
