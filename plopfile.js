@@ -12,15 +12,63 @@ module.exports = function (plop) {
       {
         type: "input",
         name: "name",
-        message: "please type name, e.g: userInfo",
+        message: "please type name(e.g: userInfo)",
       },
       {
         type: "confirm",
         name: "single",
         message: "generate single file?",
       },
+      {
+        type: "confirm",
+        name: "storage",
+        message: "enable cache?(@react-native-async-storage/async-storage)",
+      },
     ],
     actions: (data) => {
+      if (!data.name) throw new Error('`name` required')
+      if (data.storage) {
+        return data.single
+          ? [
+              {
+                type: "add",
+                path: `${basePath}/{{name}}.ts`,
+                templateFile: "templates/storage/single.hbs",
+              },
+            ]
+          : [
+              {
+                type: "add",
+                path: `${basePath}/{{name}}/index.ts`,
+                templateFile: "templates/index.hbs",
+              },
+              {
+                type: "add",
+                path: `${basePath}/{{name}}/types.ts`,
+                templateFile: "templates/types.hbs",
+              },
+              {
+                type: "add",
+                path: `${basePath}/{{name}}/utils.ts`,
+                templateFile: "templates/utils.hbs",
+              },
+              {
+                type: "add",
+                path: `${basePath}/{{name}}/use{{properCase name}}.ts`,
+                templateFile: "templates/storage/useOne.hbs",
+              },
+              {
+                type: "add",
+                path: `${basePath}/{{name}}/actions.ts`,
+                templateFile: "templates/storage/actions.hbs",
+              },
+              {
+                type: "add",
+                path: `${basePath}/{{name}}/selectors.ts`,
+                templateFile: "templates/selectors.hbs",
+              },
+            ];
+      }
       const actions = data.single
         ? [
             {

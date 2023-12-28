@@ -1,0 +1,65 @@
+/** Generator by `use-one-templates` https://github.com/suhaotian/use-one-templates */
+
+import { create } from 'use-one';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+let initialState = {
+  ready: false,
+};
+
+export type {{properCase name}}StateType = Readonly<typeof initialState>;
+
+export const {{name}}InitialState: {{properCase name}}StateType = initialState;
+
+const [use{{properCase name}}, {{name}}Store] = create<{{properCase name}}StateType>({{name}}InitialState);
+export { use{{properCase name}}, {{name}}Store };
+
+export const {{name}}Selectors = {
+  get state(): {{properCase name}}StateType  {
+    return {{name}}Store.getState(); 
+  },
+};
+
+export const {{name}}Actions = {
+  reset() {
+    {{name}}Store.setState({
+      ...{{name}}InitialState,
+      ready: true
+    });
+  },
+  async loadCache() {
+    const catchData = await AsyncStorage.getItem(key);
+    if (catchData) {
+      const result = JSON.parse(catchData) as {{properCase name}}StateType;
+      {{name}}Store.setState((state) => ({
+        ...state,
+        ...result,
+        ready: true,
+      }));
+    } else {
+      {{name}}Store.setState(
+        state => ({...state, ready: true})
+      );
+    }
+  }
+};
+
+
+
+const key = '@__{{name}}__';
+{{name}}Actions.loadCache().finally(() => {
+  let timer: ReturnType<typeof setTimeout>, time = 0;
+  {{name}}Store.subscribe(
+    async (state) => {
+      const now = Date.now();
+      if (now - time < 100) {
+        clearTimeout(timer);
+      } else {
+        time = now;
+      }
+      timer = setTimeout(() => {
+        AsyncStorage.setItem(key, JSON.stringify(state));
+      }, 100)
+    }
+  );
+});
