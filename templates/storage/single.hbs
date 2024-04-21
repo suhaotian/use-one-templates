@@ -16,11 +16,10 @@ const selectors = {
 };
 
 const actions = {
-  ...selectors,
   use,
   reset() {
     store.setState(initialState);
   },
 };
 
-export const {{camelCase name}}Store = Object.assign(actions, store);
+export const {{camelCase name}}Store = Object.assign(actions, selectors, store);

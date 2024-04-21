@@ -1,11 +1,10 @@
 /** Generator by `use-one-templates` https://github.com/suhaotian/use-one-templates */
 import type { {{pascalCase name}}Store, State } from './index';
-import { getSelectors } from './selectors';
+// import { getSelectors } from './selectors';
 
 export function getActions(store: {{pascalCase name}}Store, initialState: State)  {
-  const selectors = getSelectors(store, initialState);
+  // const selectors = getSelectors(store, initialState);
   return {
-    ...selectors,
     reset() {
       store.setState(initialState);
     },

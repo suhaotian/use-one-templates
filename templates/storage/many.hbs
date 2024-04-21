@@ -2,6 +2,8 @@
 
 import { create, persistStore, isClient } from 'use-one';
 import { getActions } from './actions';
+import { getSelectors } from './selectors';
+
 
 export const initialState = {
   ready: false, // required
@@ -14,6 +16,7 @@ export type {{pascalCase name}}Store = ReturnType<typeof create<State>>[1];
 
 export const {{camelCase name}}Store = Object.assign(
   getActions(store, initialState),
+  getSelectors(store, initialState),
   { use },
   store
 );
