@@ -22,11 +22,11 @@ module.exports = function (plop) {
       {
         type: "confirm",
         name: "storage",
-        message: "enable cache?(@react-native-async-storage/async-storage)",
+        message: "enable persist store?",
       },
     ],
     actions: (data) => {
-      if (!data.name) throw new Error('`name` required')
+      if (!data.name) throw new Error("`name` required");
       if (data.storage) {
         return data.single
           ? [
@@ -40,7 +40,7 @@ module.exports = function (plop) {
               {
                 type: "add",
                 path: `${basePath}/{{name}}/index.ts`,
-                templateFile: "templates/index.hbs",
+                templateFile: "templates/storage/many.hbs",
               },
               {
                 type: "add",
@@ -54,13 +54,8 @@ module.exports = function (plop) {
               },
               {
                 type: "add",
-                path: `${basePath}/{{name}}/use{{properCase name}}.ts`,
-                templateFile: "templates/storage/useOne.hbs",
-              },
-              {
-                type: "add",
                 path: `${basePath}/{{name}}/actions.ts`,
-                templateFile: "templates/storage/actions.hbs",
+                templateFile: "templates/actions.hbs",
               },
               {
                 type: "add",
@@ -92,11 +87,6 @@ module.exports = function (plop) {
               type: "add",
               path: `${basePath}/{{name}}/utils.ts`,
               templateFile: "templates/utils.hbs",
-            },
-            {
-              type: "add",
-              path: `${basePath}/{{name}}/use{{properCase name}}.ts`,
-              templateFile: "templates/useOne.hbs",
             },
             {
               type: "add",

@@ -1,11 +1,11 @@
 /** Generator by `use-one-templates` https://github.com/suhaotian/use-one-templates */
+import type { {{pascalCase name}}Store, State } from './index';
 
-import { {{name}}Store } from './use{{properCase name}}';
-import { {{properCase name}}StateType } from './types';
-
-
-export const {{name}}Selectors = {
-  get state(): {{properCase name}}StateType  {
-    return {{name}}Store.getState(); 
-  },
+export function getSelectors(store: {{pascalCase name}}Store, initialState: State)  {
+  return {
+    initialState,
+    get state() {
+      return store.getState();
+    },
+  }
 }

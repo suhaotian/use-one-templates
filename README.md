@@ -56,7 +56,6 @@ src
     │   ├── index.ts
     │   ├── selectors.ts
     │   ├── types.ts
-    │   ├── useAuthInfo.ts
     │   └── utils.ts
     ├── count.ts
     └── userInfo
@@ -64,8 +63,7 @@ src
         ├── index.ts
         ├── selectors.ts
         ├── types.ts
-        ├── useUserInfo.ts
         └── utils.ts
 
-3 directories, 13 files
+3 directories, 11 files
 ```

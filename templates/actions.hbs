@@ -1,10 +1,13 @@
 /** Generator by `use-one-templates` https://github.com/suhaotian/use-one-templates */
+import type { {{pascalCase name}}Store, State } from './index';
+import { getSelectors } from './selectors';
 
-import { {{name}}Store, {{name}}InitialState } from './use{{properCase name}}';
-import { {{name}}Selectors } from './selectors';
-
-export const {{name}}Actions = {
-  reset() {
-    {{name}}Store.setState({{name}}InitialState);
-  },
+export function getActions(store: {{pascalCase name}}Store, initialState: State)  {
+  const selectors = getSelectors(store, initialState);
+  return {
+    ...selectors,
+    reset() {
+      store.setState(initialState);
+    },
+  }
 }

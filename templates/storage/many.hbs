@@ -1,12 +1,13 @@
 /** Generator by `use-one-templates` https://github.com/suhaotian/use-one-templates */
 
-import { create } from 'use-one';
+import { create, persistStore, isClient } from 'use-one';
 import { getActions } from './actions';
 
 export const initialState = {
-  //
+  ready: false, // required
 };
 const [use, store] = create(initialState);
+isClient && persistStore(store, {key: "@__{{name}}"});
 
 export type State = typeof initialState;
 export type {{pascalCase name}}Store = ReturnType<typeof create<State>>[1];
